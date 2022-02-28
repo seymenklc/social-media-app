@@ -1,0 +1,13 @@
+const IS_PENDING = 'IS_PENDING';
+const ADDED_DOC = 'ADDED_DOC';
+const UPDATED_DOC = 'UPDATED_DOC';
+const DELETED_DOC = 'DELETED_DOC';
+const ERROR = 'ERROR';
+
+export {
+    IS_PENDING,
+    ADDED_DOC,
+    UPDATED_DOC,
+    DELETED_DOC,
+    ERROR
+};
