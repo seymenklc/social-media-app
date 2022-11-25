@@ -77,7 +77,8 @@ export default function Create() {
                         className='hidden'
                         onChange={handleFileChange}
                     />
-                    {!response.isPending && <button disabled={!postBody}>Post</button>}
+                    {!user && <button disabled>Login</button>}
+                    {!response.isPending && user && <button disabled={!postBody}>Post</button>}
                     {response.isPending && <button disabled>Posting...</button>}
                 </div>
             </form>

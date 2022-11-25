@@ -5,8 +5,8 @@ import { useAuthContext } from './hooks/useAuthContext';
 // pages & components
 import PostDetails from './pages/PostDetails';
 import Dashboard from './pages/Dashboard';
-import Navbar from './components/Navbar';
 import AuthForm from './components/AuthForm';
+import Navbar from './components/Navbar';
 
 function App() {
   const { isAuthReady, user } = useAuthContext();
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route
               path='/'
-              element={user ? <Dashboard /> : <Navigate to='/login' />}
+              element={<Dashboard />}
             />
             <Route
               path='/login'
@@ -31,7 +31,7 @@ function App() {
             />
             <Route
               path='/post/:id'
-              element={user ? <PostDetails /> : <Navigate to='/login' />}
+              element={<PostDetails />}
             />
           </Routes>
         </React.Fragment>

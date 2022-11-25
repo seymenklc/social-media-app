@@ -64,7 +64,7 @@ export default function Post({ document }) {
                                 </button>
                                 <span className='p-1'>{comments.length}</span>
                             </div>
-                            {user.uid === createdBy.id && (
+                            {user && user?.uid === createdBy.id && (
                                 <div className='ml-3'>
                                     <button className='post-like' onClick={handleDelete}>
                                         <CgTrash />

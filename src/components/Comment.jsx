@@ -1,4 +1,3 @@
-
 export default function Comment({ comment }) {
     const { body, author } = comment;
 

@@ -27,14 +27,14 @@ export const usePostLogic = ({ likes, comments, id, createdBy }) => {
         likedPostsResponse.error,
     ];
 
-    const filteredUserArr = usersCollection?.filter(u => u.id === user.uid);
+    const filteredUserArr = usersCollection?.filter(u => u.id === user?.uid);
     const filteredUser = filteredUserArr?.[0];
     const likedPosts = filteredUser?.likedPosts;
 
     const userObj = {
-        id: user.uid,
-        nickname: user.displayName,
-        photoURL: user.photoURL
+        id: user?.uid,
+        nickname: user?.displayName,
+        photoURL: user?.photoURL
     };
 
     // check if user already liked 
