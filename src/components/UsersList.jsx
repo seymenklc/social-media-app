@@ -8,7 +8,10 @@ export default function UsersList() {
             <div className="user-carousel">
                 {error && <p className='error'>{error}</p>}
                 {documents && documents.map(user => (
-                    <div key={user.id} className={`avatar ${user.online ? 'online' : 'offline'}`}>
+                    <div
+                        key={user.id}
+                        className={`avatar ${user.online ? 'online' : 'offline'}`}
+                    >
                         <div className="post-avatar">
                             <img src={user.photoURL} alt={user.nickname} />
                         </div>

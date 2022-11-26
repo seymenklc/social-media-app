@@ -7,11 +7,13 @@ import { useAuthContext } from '../hooks/useAuthContext';
 import { serverTimestamp } from 'firebase/firestore';
 // styles & assets
 import { CgFileAdd } from 'react-icons/cg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Create() {
     const [file, setFile] = useState(null);
     const [postBody, setPostBody] = useState('');
 
+    const navigate = useNavigate();
     const { user } = useAuthContext();
     const { response, addDocument } = useFirestore('posts');
     const { formError, setFormError, checkFile } = useFile();
@@ -26,6 +28,11 @@ export default function Create() {
 
         setFormError(null);
         setFile(file);
+    };
+
+
+    const handleNavigate = () => {
+        if (!user) navigate('/login');
     };
 
     const handleSubmit = async (e) => {
@@ -63,7 +70,7 @@ export default function Create() {
                     onChange={(e) => setPostBody(e.target.value)}
                 />
                 <div className='flex justify-between'>
-                    <label htmlFor="imageInput" className='self-center mt-5'>
+                    <label htmlFor="imageInput" className='self-center mt-5' onClick={handleNavigate}>
                         <i><CgFileAdd className='h-auto w-6' /></i>
                         {file && (
                             <span className='inline-block px-2'>

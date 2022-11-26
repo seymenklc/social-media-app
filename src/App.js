@@ -1,20 +1,20 @@
-import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 // hooks
 import { useAuthContext } from './hooks/useAuthContext';
-// pages & components
+// pages 
 import PostDetails from './pages/PostDetails';
 import Dashboard from './pages/Dashboard';
+//  components
 import AuthForm from './components/AuthForm';
 import Navbar from './components/Navbar';
 
-function App() {
+export default function App() {
   const { isAuthReady, user } = useAuthContext();
 
   return (
-    <div>
+    <div className='h-full'>
       {isAuthReady && (
-        <React.Fragment>
+        <>
           <Navbar />
           <Routes>
             <Route
@@ -34,10 +34,8 @@ function App() {
               element={<PostDetails />}
             />
           </Routes>
-        </React.Fragment>
+        </>
       )}
     </div>
   );
 };
-
-export default App;

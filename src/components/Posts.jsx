@@ -1,23 +1,28 @@
 // hooks
 import { useCollection } from "../hooks/useCollection";
+import { usePagination } from "../hooks/usePagination";
 // components
 import Post from "./Post";
 import Spinner from "./Spinner";
+import Pagination from "./Pagination";
 
 export default function Posts() {
     const { documents, error } = useCollection('posts');
-
-    // sorting docs by createdAt property
-    const sortedDocuments = documents
-        ?.sort((p1, p2) => (p1.createdAt > p2.createdAt) ? -1 : 1);
+    const { currentItems, pageNums, paginate } = usePagination(
+        documents?.sort((p1, p2) => {
+            return (p1.createdAt > p2.createdAt) ? -1 : 1;
+        }));
 
     return (
-        <section>
+        <section className="container max-w-lg mx-auto">
             {error && <p>{error}</p>}
             {!documents && <Spinner />}
-            {documents && sortedDocuments.map(doc => (
+            {documents && currentItems.map(doc => (
                 <Post key={doc.id} document={doc} />
             ))}
+            <div className="py-3 flex justify-end">
+                <Pagination pageNums={pageNums} paginate={paginate} />
+            </div>
         </section>
     );
 }

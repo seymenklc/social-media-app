@@ -15,7 +15,11 @@ export default function Post({ document }) {
     const { errors, isLiked, handleDelete, handleLike, handleDatestamp } = usePostLogic(document);
     const { createdBy, body, createdAt, image, likes, comments, id } = document;
 
-    const handleNavigate = () => navigate(`/post/${id}`);
+    const handleNavigate = () => {
+        if (!user) navigate('/login');
+
+        navigate(`/post/${id}`);
+    };
 
     return (
         <>
